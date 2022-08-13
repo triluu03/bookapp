@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const User = require('../models/user')
 
 router.get('/', async (req, res) => {
-    const users = await User.find({})
+    const users = await User.find({}).populate('books')
     res.json(users)
 })
 
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
 
     const user = new User({
         name,
-        birthDate,
+        birthDate: new Date(birthDate),
         username,
         passwordHash,
     })

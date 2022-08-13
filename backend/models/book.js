@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     published: {
-        type: Date,
+        type: Number,
         required: true,
     },
     author: {

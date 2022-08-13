@@ -4,9 +4,13 @@ const Book = require('../models/book')
 const User = require('../models/user')
 
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 router.get('/', async (req, res) => {
-    const books = await Book.find({}).populate('user')
+    const books = await Book.find({}).populate('addedBy', {
+        username: 1,
+        name: 1,
+    })
     res.json(books)
 })
 
@@ -41,7 +45,7 @@ router.post('/', async (req, res) => {
     })
 
     const savedBook = await book.save()
-    user.books.concat(savedBook._id)
+    user.books = user.books.concat(savedBook._id)
     await user.save()
 
     res.status(201).json(savedBook)
