@@ -5,6 +5,7 @@ const app = express()
 
 const booksRouter = require('./controllers/books')
 const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
 
 // Connecting to MongoDB Server
 const mongoose = require('mongoose')
@@ -26,5 +27,6 @@ app.use(express.json())
 
 app.use('/api/books', booksRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 module.exports = app
