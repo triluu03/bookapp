@@ -1,3 +1,8 @@
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { initializeBooks } from './reducers/bookReducer'
+
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 
 import Home from './components/Home'
@@ -6,6 +11,11 @@ import LoginForm from './components/LoginForm'
 import Credits from './components/Credits'
 
 const App = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(initializeBooks())
+    }, [dispatch])
+
     const style = {
         padding: 5,
     }
