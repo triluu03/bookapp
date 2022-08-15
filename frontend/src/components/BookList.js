@@ -6,6 +6,7 @@ import {
     TableRow,
     TableCell,
     TableBody,
+    Typography,
 } from '@mui/material'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import ThumbDownIcon from '@mui/icons-material/ThumbDown'
@@ -16,7 +17,9 @@ const BookList = () => {
     const books = useSelector((state) => state.books)
     return (
         <div>
-            <h2>Books List</h2>
+            <Typography variant='h4' component='div' sx={{ mt: 4 }}>
+                Books List
+            </Typography>
             <TableContainer component={Paper} variant='contained'>
                 <Table aria-label='books list'>
                     <TableHead>
