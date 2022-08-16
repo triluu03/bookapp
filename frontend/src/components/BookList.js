@@ -38,7 +38,7 @@ const BookList = () => {
                     </TableHead>
                     <TableBody>
                         {books.map((book) => (
-                            <TableRow>
+                            <TableRow key={book.id}>
                                 <TableCell component='th' scope='row'>
                                     {book.name}
                                 </TableCell>
