@@ -1,10 +1,13 @@
 import { Button, TextField, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import loginService from '../services/login'
 
 const LoginForm = ({ setUser }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigate = useNavigate()
 
     const submit = async (event) => {
         event.preventDefault()
@@ -13,6 +16,7 @@ const LoginForm = ({ setUser }) => {
             setUsername('')
             setPassword('')
             setUser(user)
+            navigate('/')
             window.localStorage.setItem('logged-in-user', JSON.stringify(user))
         } catch (error) {
             console.log(error.message)

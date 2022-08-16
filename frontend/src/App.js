@@ -23,6 +23,12 @@ const App = () => {
         }
     }, [])
 
+    const handleLogout = async (event) => {
+        event.preventDefault()
+        window.localStorage.removeItem('logged-in-user')
+        setUser(null)
+    }
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(initializeBooks())
@@ -43,9 +49,20 @@ const App = () => {
                             Credits
                         </Button>
                         {user ? (
-                            <Typography variant='button'>
-                                {user.username} logged-in
-                            </Typography>
+                            <div>
+                                <Typography variant='button'>
+                                    {user.username} logged-in
+                                </Typography>
+                                <Button
+                                    color='secondary'
+                                    variant='contained'
+                                    size='small'
+                                    sx={{ ml: 1 }}
+                                    onClick={handleLogout}
+                                >
+                                    Logout
+                                </Button>
+                            </div>
                         ) : (
                             <Button
                                 color='inherit'
