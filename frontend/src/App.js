@@ -12,6 +12,8 @@ import BookList from './components/BookList'
 import LoginForm from './components/LoginForm'
 import Credits from './components/Credits'
 
+import bookService from './services/books'
+
 const App = () => {
     const [user, setUser] = useState(null)
 
@@ -20,6 +22,7 @@ const App = () => {
         if (loggedUserJSON) {
             const user = JSON.parse(loggedUserJSON)
             setUser(user)
+            bookService.setToken(user.token)
         }
     }, [])
 

@@ -13,6 +13,8 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 
 import { useSelector } from 'react-redux'
 
+import BookForm from './BookForm'
+
 const BookList = () => {
     const books = useSelector((state) => state.books)
     return (
@@ -52,6 +54,7 @@ const BookList = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <BookForm />
         </div>
     )
 }

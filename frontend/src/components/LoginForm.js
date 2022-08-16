@@ -1,7 +1,9 @@
 import { Button, TextField, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+
 import loginService from '../services/login'
+import bookService from '../services/books'
 
 const LoginForm = ({ setUser }) => {
     const [username, setUsername] = useState('')
@@ -16,6 +18,7 @@ const LoginForm = ({ setUser }) => {
             setUsername('')
             setPassword('')
             setUser(user)
+            bookService.setToken(user.token)
             navigate('/')
             window.localStorage.setItem('logged-in-user', JSON.stringify(user))
         } catch (error) {
