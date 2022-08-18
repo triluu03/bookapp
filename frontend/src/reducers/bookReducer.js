@@ -12,10 +12,18 @@ const bookSlice = createSlice({
         addBook(state, action) {
             return state.concat(action.payload)
         },
+        modifyBook(state, action) {
+            const id = action.payload.id
+            return state.map((book) =>
+                book.id === id
+                    ? { ...action.payload, addedBy: book.addedBy }
+                    : book
+            )
+        },
     },
 })
 
-export const { setBooks, addBook } = bookSlice.actions
+export const { setBooks, addBook, modifyBook } = bookSlice.actions
 export default bookSlice.reducer
 
 export const initializeBooks = () => {
@@ -29,5 +37,25 @@ export const createBook = (newObject) => {
     return async (dispatch) => {
         const newBook = await bookService.create(newObject)
         dispatch(addBook(newBook))
+    }
+}
+
+export const likeBook = (bookObject) => {
+    return async (dispatch) => {
+        const newBook = await bookService.modify(bookObject.id, {
+            ...bookObject,
+            likes: bookObject.likes + 1,
+        })
+        dispatch(modifyBook(newBook))
+    }
+}
+
+export const dislikeBook = (bookObject) => {
+    return async (dispatch) => {
+        const newBook = await bookService.modify(bookObject.id, {
+            ...bookObject,
+            dislikes: bookObject.dislikes + 1,
+        })
+        dispatch(modifyBook(newBook))
     }
 }

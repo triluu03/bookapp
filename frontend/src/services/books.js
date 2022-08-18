@@ -20,5 +20,10 @@ const create = async (newObject) => {
     return response.data
 }
 
-const bookService = { getAll, create, setToken }
+const modify = async (id, newObject) => {
+    const response = await axios.put(`${baseUrl}/${id}`, newObject)
+    return response.data
+}
+
+const bookService = { getAll, create, setToken, modify }
 export default bookService

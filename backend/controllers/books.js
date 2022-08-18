@@ -14,6 +14,11 @@ router.get('/', async (req, res) => {
     res.json(books)
 })
 
+router.get('/:id', async (req, res) => {
+    const book = await Book.findById(req.params.id)
+    res.json(book)
+})
+
 // Getting Authorized token
 const getTokenFrom = (req) => {
     const authorization = req.get('authorization')
@@ -49,6 +54,23 @@ router.post('/', async (req, res) => {
     await user.save()
 
     res.status(201).json(savedBook)
+})
+
+router.put('/:id', async (req, res) => {
+    const body = req.body
+    const id = req.params.id
+
+    const book = {
+        name: body.name,
+        published: body.published,
+        author: body.author,
+        likes: body.likes,
+        dislikes: body.dislikes,
+        addedBy: body.addedBy.id,
+    }
+
+    const changedBook = await Book.findByIdAndUpdate(id, book, { new: true })
+    res.status(200).json(changedBook)
 })
 
 module.exports = router
