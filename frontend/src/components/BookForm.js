@@ -27,7 +27,7 @@ const BookForm = () => {
 
     return (
         <Box>
-            <Typography variant='h4' component='div'>
+            <Typography variant='h5' component='div'>
                 Add Book
             </Typography>
             <form onSubmit={submit}>
@@ -38,16 +38,12 @@ const BookForm = () => {
                         value={name}
                         onChange={({ target }) => setName(target.value)}
                     />
-                </div>
-                <div>
                     <TextField
                         label='Author'
                         variant='outlined'
                         value={author}
                         onChange={({ target }) => setAuthor(target.value)}
                     />
-                </div>
-                <div>
                     <TextField
                         label='Published'
                         variant='outlined'
@@ -55,7 +51,9 @@ const BookForm = () => {
                         onChange={({ target }) => setPublished(target.value)}
                     />
                 </div>
-                <Button type='submit'>Add Book</Button>
+                <Button size='big' type='submit'>
+                    Add Book
+                </Button>
             </form>
         </Box>
     )

@@ -13,10 +13,15 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 
 import { useSelector, useDispatch } from 'react-redux'
+import { useState } from 'react'
 
 import { likeBook, dislikeBook } from '../reducers/bookReducer'
 
+import BookForm from './BookForm'
+
 const BookList = () => {
+    const [showBookForm, setShowBookForm] = useState(false)
+
     const books = useSelector((state) => state.books)
 
     const dispatch = useDispatch()
@@ -74,6 +79,13 @@ const BookList = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            {showBookForm ? <BookForm /> : null}
+            <Button
+                onClick={() => setShowBookForm(!showBookForm)}
+                color={showBookForm ? 'error' : 'primary'}
+            >
+                {showBookForm ? 'cancel' : 'add new book'}
+            </Button>
         </div>
     )
 }
