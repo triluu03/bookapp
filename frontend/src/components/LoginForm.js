@@ -49,7 +49,7 @@ const LoginForm = ({ setUser }) => {
                         onChange={({ target }) => setPassword(target.value)}
                     />
                 </div>
-                <Button variant='contained' type='submit'>
+                <Button sx={{ mt: 1 }} variant='contained' type='submit'>
                     login
                 </Button>
             </form>

@@ -33,7 +33,7 @@ const BookForm = () => {
     }
 
     return (
-        <Box>
+        <Box sx={{ mt: 2, width: 300 }}>
             <Typography variant='h5' component='div'>
                 Add Book
             </Typography>
@@ -41,19 +41,35 @@ const BookForm = () => {
                 <div>
                     <TextField
                         label='Name'
+                        size='small'
+                        margin='dense'
                         variant='outlined'
+                        fullWidth={true}
+                        placeholder='Title of the book'
                         value={name}
                         onChange={({ target }) => setName(target.value)}
                     />
+                </div>
+                <div>
                     <TextField
                         label='Author'
+                        size='small'
+                        margin='dense'
                         variant='outlined'
+                        fullWidth={true}
+                        placeholder='Name of the author'
                         value={author}
                         onChange={({ target }) => setAuthor(target.value)}
                     />
+                </div>
+                <div>
                     <TextField
                         label='Published'
+                        size='small'
+                        margin='dense'
                         variant='outlined'
+                        fullWidth={true}
+                        placeholder='Published Year'
                         value={published}
                         onChange={({ target }) => setPublished(target.value)}
                     />
