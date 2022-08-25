@@ -10,11 +10,11 @@ import userService from '../services/users'
 
 const About = () => {
     return (
-        <Box sx={{ mt: 1 }}>
-            <div>
+        <Box sx={{ mt: 3 }}>
+            <Box>
                 <Typography variant='h4'>About</Typography>
-            </div>
-            <div>
+            </Box>
+            <Box sx={{ mt: 1 }}>
                 <Typography variant='body1'>
                     BookApp is one of my personal projects. The idea behind this
                     app is trying to make a platform for people (users) to share
@@ -25,7 +25,7 @@ const About = () => {
                     login as an user or create an account (if you don't have one
                     yet).
                 </Typography>
-            </div>
+            </Box>
         </Box>
     )
 }
@@ -81,7 +81,7 @@ const CreateAccount = () => {
     }
 
     return (
-        <Box sx={{ width: 360, mt: 1 }}>
+        <Box sx={{ width: 360, mt: 2 }}>
             <div>
                 <Typography variant='h4'>Create an account</Typography>
             </div>
