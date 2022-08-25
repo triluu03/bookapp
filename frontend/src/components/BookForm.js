@@ -3,6 +3,7 @@ import { Box } from '@mui/system'
 import { useState } from 'react'
 
 import { createBook } from '../reducers/bookReducer'
+import { notify } from '../reducers/notificationReducer'
 
 import { useDispatch } from 'react-redux'
 
@@ -17,11 +18,17 @@ const BookForm = () => {
         event.preventDefault()
         try {
             dispatch(createBook({ name, author, published: Number(published) }))
+            dispatch(
+                notify({
+                    message: `${name} by ${author} is added successfully`,
+                    type: 'success',
+                })
+            )
             setName('')
             setAuthor('')
             setPublished('')
         } catch (error) {
-            console.log(error.message)
+            dispatch(notify({ message: error.message, type: 'alert' }))
         }
     }
 
