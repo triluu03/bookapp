@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { initializeBooks } from './reducers/bookReducer'
 
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 
-import { Container, AppBar, Toolbar, Button, Typography } from '@mui/material'
+import {
+    Container,
+    AppBar,
+    Toolbar,
+    Button,
+    Typography,
+    Alert,
+    AlertTitle,
+} from '@mui/material'
 
 import Home from './components/Home'
 import BookList from './components/BookList'
@@ -16,6 +24,8 @@ import bookService from './services/books'
 
 const App = () => {
     const [user, setUser] = useState(null)
+
+    const notification = useSelector((state) => state.notification)
 
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('logged-in-user')
@@ -77,6 +87,19 @@ const App = () => {
                         )}
                     </Toolbar>
                 </AppBar>
+                {notification ? (
+                    notification.type === 'alert' ? (
+                        <Alert severity='error'>
+                            <AlertTitle>Error</AlertTitle>
+                            {notification.message}
+                        </Alert>
+                    ) : (
+                        <Alert security='success'>
+                            <AlertTitle>Success</AlertTitle>
+                            {notification.message}
+                        </Alert>
+                    )
+                ) : null}
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/books' element={<BookList />} />
