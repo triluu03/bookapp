@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { initializeBooks } from './reducers/bookReducer'
+import { initializeUsers } from './reducers/usersReducer'
+import { setLoggedUser } from './reducers/loggedUserReducer'
 
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 
@@ -35,7 +37,9 @@ const App = () => {
             const user = JSON.parse(loggedUserJSON)
             setUser(user)
             bookService.setToken(user.token)
+            dispatch(setLoggedUser(user))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleLogout = async (event) => {
@@ -47,6 +51,10 @@ const App = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(initializeBooks())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(initializeUsers())
     }, [dispatch])
 
     if (!user) {
