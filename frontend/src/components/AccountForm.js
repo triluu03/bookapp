@@ -73,7 +73,7 @@ const AccountForm = () => {
                             margin='dense'
                             value={name}
                             onChange={({ target }) => setName(target.value)}
-                            sx={{ width: '20%' }}
+                            sx={{ maxWidth: '75%', width: 400 }}
                         />
                     </div>
                     <div>
@@ -86,7 +86,7 @@ const AccountForm = () => {
                             onChange={({ target }) =>
                                 setBirthDate(target.value)
                             }
-                            sx={{ width: '20%' }}
+                            sx={{ maxWidth: '75%', width: 400 }}
                         />
                     </div>
                     <div>
@@ -97,7 +97,7 @@ const AccountForm = () => {
                             placeholder='Enter your username'
                             value={username}
                             onChange={({ target }) => setUsername(target.value)}
-                            sx={{ width: '20%' }}
+                            sx={{ maxWidth: '75%', width: 400 }}
                         />
                     </div>
                     <div>
@@ -109,7 +109,7 @@ const AccountForm = () => {
                             placeholder='Enter your password'
                             value={password}
                             onChange={({ target }) => setPassword(target.value)}
-                            sx={{ width: '20%' }}
+                            sx={{ maxWidth: '75%', width: 400 }}
                         />
                     </div>
                     <div>
@@ -123,7 +123,7 @@ const AccountForm = () => {
                             onChange={({ target }) =>
                                 setRepeatedPassword(target.value)
                             }
-                            sx={{ width: '20%' }}
+                            sx={{ maxWidth: '75%', width: 400 }}
                         />
                     </div>
                     <Button type='submit'>Create Account</Button>

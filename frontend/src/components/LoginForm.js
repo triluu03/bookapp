@@ -64,7 +64,7 @@ const LoginForm = ({ setUser }) => {
                                 onChange={({ target }) =>
                                     setUsername(target.value)
                                 }
-                                sx={{ width: '15%' }}
+                                sx={{ maxWidth: '75%', width: 300 }}
                             />
                         </div>
                         <div>
@@ -76,7 +76,7 @@ const LoginForm = ({ setUser }) => {
                                 onChange={({ target }) =>
                                     setPassword(target.value)
                                 }
-                                sx={{ width: '15%' }}
+                                sx={{ maxWidth: '75%', width: 300 }}
                             />
                         </div>
                         <Button

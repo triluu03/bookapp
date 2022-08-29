@@ -79,7 +79,7 @@ const App = () => {
                                     {user.username} logged-in
                                 </Typography>
                                 <Button
-                                    color='secondary'
+                                    color='error'
                                     variant='contained'
                                     size='small'
                                     sx={{ ml: 1 }}
