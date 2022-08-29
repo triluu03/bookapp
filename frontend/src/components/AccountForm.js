@@ -115,10 +115,10 @@ const AccountForm = () => {
                     <div>
                         <TextField
                             size='small'
-                            label='Repeat Password'
+                            label='Password Confirmation'
                             type='password'
                             margin='dense'
-                            placeholder='Repeat your password'
+                            placeholder='Confirm your password'
                             value={repeatedPassword}
                             onChange={({ target }) =>
                                 setRepeatedPassword(target.value)

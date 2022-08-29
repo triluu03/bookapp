@@ -1,11 +1,14 @@
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 
+import BookList from './BookList'
+import Credits from './Credits'
+
 const About = () => {
     return (
         <Box sx={{ mt: 3 }}>
             <Box>
-                <Typography variant='h4'>About</Typography>
+                <Typography variant='h4'>Welcome to BookApp</Typography>
             </Box>
             <Box sx={{ mt: 1 }}>
                 <Typography variant='body1'>
@@ -14,9 +17,6 @@ const About = () => {
                     their favorite books to others and also give their thoughts
                     about specific books. You can see the list of suggested
                     books by clicking the button "BOOKS" on the menu bar above.
-                    If you want to suggest, like, or dislike a book, please
-                    login as an user or create an account (if you don't have one
-                    yet).
                 </Typography>
             </Box>
         </Box>
@@ -27,6 +27,8 @@ const Home = () => {
     return (
         <div>
             <About />
+            <BookList />
+            <Credits />
         </div>
     )
 }

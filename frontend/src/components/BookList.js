@@ -23,6 +23,7 @@ const BookList = () => {
     const [showBookForm, setShowBookForm] = useState(false)
 
     const books = useSelector((state) => state.books)
+    const loggedUser = useSelector((state) => state.loggedUser)
 
     const dispatch = useDispatch()
 
@@ -73,7 +74,11 @@ const BookList = () => {
                                         {book.dislikes}
                                     </Button>
                                 </TableCell>
-                                <TableCell>{book.addedBy.name}</TableCell>
+                                <TableCell>
+                                    {book.addedBy
+                                        ? book.addedBy.name
+                                        : loggedUser.name}
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

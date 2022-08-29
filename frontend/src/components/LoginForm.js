@@ -2,12 +2,15 @@ import { Button, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 
 import loginService from '../services/login'
 import bookService from '../services/books'
 
 import AccountForm from './AccountForm'
+
+import { setLoggedUser } from '../reducers/loggedUserReducer'
 
 const LoginForm = ({ setUser }) => {
     const [username, setUsername] = useState('')
@@ -16,6 +19,7 @@ const LoginForm = ({ setUser }) => {
     const [showAccountForm, setShowAccountForm] = useState(false)
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const submit = async (event) => {
         event.preventDefault()
@@ -26,6 +30,7 @@ const LoginForm = ({ setUser }) => {
             setUser(user)
             bookService.setToken(user.token)
             navigate('/')
+            dispatch(setLoggedUser(user))
             window.localStorage.setItem('logged-in-user', JSON.stringify(user))
         } catch (error) {
             console.log(error.message)
