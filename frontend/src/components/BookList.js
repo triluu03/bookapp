@@ -53,7 +53,12 @@ const BookList = () => {
                         {books.map((book) => (
                             <TableRow key={book.id}>
                                 <TableCell component='th' scope='row'>
-                                    {book.name}
+                                    <Link
+                                        to={`/books/${book.id}`}
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        {book.name}
+                                    </Link>
                                 </TableCell>
                                 <TableCell>{book.author}</TableCell>
                                 <TableCell>{book.published}</TableCell>

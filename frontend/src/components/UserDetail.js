@@ -1,12 +1,10 @@
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 import { Box } from '@mui/system'
 import { Typography } from '@mui/material'
 
-const UserDetail = () => {
+const UserDetail = ({ users }) => {
     const id = useParams().id
-    const users = useSelector((state) => state.users)
     const user = users.find((u) => u.id === id.toString())
 
     return (

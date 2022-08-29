@@ -23,14 +23,17 @@ import Home from './components/Home'
 import BookList from './components/BookList'
 import LoginForm from './components/LoginForm'
 import Credits from './components/Credits'
+import UserDetail from './components/UserDetail'
+import BookDetails from './components/BookDetail'
 
 import bookService from './services/books'
-import UserDetail from './components/UserDetail'
 
 const App = () => {
     const [user, setUser] = useState(null)
 
     const notification = useSelector((state) => state.notification)
+    const users = useSelector((state) => state.users)
+    const books = useSelector((state) => state.books)
 
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('logged-in-user')
@@ -129,7 +132,14 @@ const App = () => {
                         element={<LoginForm setUser={setUser} />}
                     />
                     <Route path='/credits' element={<Credits />} />
-                    <Route path='/users/:id' element={<UserDetail />} />
+                    <Route
+                        path='/users/:id'
+                        element={<UserDetail users={users} />}
+                    />
+                    <Route
+                        path='/books/:id'
+                        element={<BookDetails books={books} />}
+                    />
                 </Routes>
             </BrowserRouter>
         </Container>
