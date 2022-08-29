@@ -15,6 +15,8 @@ import {
     AlertTitle,
 } from '@mui/material'
 
+import { Box } from '@mui/system'
+
 import Home from './components/Home'
 import BookList from './components/BookList'
 import LoginForm from './components/LoginForm'
@@ -46,6 +48,16 @@ const App = () => {
     useEffect(() => {
         dispatch(initializeBooks())
     }, [dispatch])
+
+    if (!user) {
+        return (
+            <Box>
+                <BrowserRouter>
+                    <LoginForm setUser={setUser} />
+                </BrowserRouter>
+            </Box>
+        )
+    }
 
     return (
         <Container>

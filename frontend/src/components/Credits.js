@@ -25,7 +25,7 @@ const Credits = () => {
                 <Typography variant='h4'>Contact</Typography>
             </Box>
             <Box sx={{ mt: 1 }}>
-                <Typography variant='body1'>
+                <Typography>
                     <a href='https://www.linkedin.com/in/triluu03/'>LinkedIn</a>{' '}
                     <a href='https://github.com/triluu03'>GitHub</a>
                 </Typography>
