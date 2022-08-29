@@ -18,6 +18,7 @@ import { useState } from 'react'
 import { likeBook, dislikeBook } from '../reducers/bookReducer'
 
 import BookForm from './BookForm'
+import { Link } from 'react-router-dom'
 
 const BookList = () => {
     const [showBookForm, setShowBookForm] = useState(false)
@@ -75,9 +76,14 @@ const BookList = () => {
                                     </Button>
                                 </TableCell>
                                 <TableCell>
-                                    {book.addedBy
-                                        ? book.addedBy.name
-                                        : loggedUser.name}
+                                    <Button
+                                        component={Link}
+                                        to={`/users/${book.addedBy.id}`}
+                                    >
+                                        {book.addedBy
+                                            ? book.addedBy.name
+                                            : loggedUser.name}
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         ))}

@@ -25,6 +25,7 @@ import LoginForm from './components/LoginForm'
 import Credits from './components/Credits'
 
 import bookService from './services/books'
+import UserDetail from './components/UserDetail'
 
 const App = () => {
     const [user, setUser] = useState(null)
@@ -128,6 +129,7 @@ const App = () => {
                         element={<LoginForm setUser={setUser} />}
                     />
                     <Route path='/credits' element={<Credits />} />
+                    <Route path='/users/:id' element={<UserDetail />} />
                 </Routes>
             </BrowserRouter>
         </Container>
