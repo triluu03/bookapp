@@ -76,22 +76,32 @@ const App = () => {
             <BrowserRouter className='app'>
                 <AppBar position='static'>
                     <Toolbar>
-                        <Button color='inherit' component={Link} to='/'>
-                            Home
-                        </Button>
-                        <Button color='inherit' component={Link} to='/books'>
-                            Books
-                        </Button>
-                        <Button color='inherit' component={Link} to='/credits'>
-                            Credits
-                        </Button>
+                        <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
+                            <Button color='inherit' component={Link} to='/'>
+                                Home
+                            </Button>
+                            <Button
+                                color='inherit'
+                                component={Link}
+                                to='/books'
+                            >
+                                Books
+                            </Button>
+                            <Button
+                                color='inherit'
+                                component={Link}
+                                to='/credits'
+                            >
+                                Credits
+                            </Button>
+                        </Box>
                         {user ? (
                             <div>
                                 <Typography variant='button'>
                                     {user.username} logged-in
                                 </Typography>
                                 <Button
-                                    color='error'
+                                    color='primary'
                                     variant='contained'
                                     size='small'
                                     sx={{ ml: 1 }}
