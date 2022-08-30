@@ -1,8 +1,8 @@
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 
-import BookList from './BookList'
 import Credits from './Credits'
+import { BookInHome } from './BookList'
 
 const About = () => {
     return (
@@ -27,7 +27,7 @@ const Home = () => {
     return (
         <div>
             <About />
-            <BookList />
+            <BookInHome />
             <Credits />
         </div>
     )
