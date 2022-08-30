@@ -35,6 +35,7 @@ const App = () => {
     const users = useSelector((state) => state.users)
     const books = useSelector((state) => state.books)
 
+    const dispatch = useDispatch()
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('logged-in-user')
         if (loggedUserJSON) {
@@ -46,13 +47,6 @@ const App = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleLogout = async (event) => {
-        event.preventDefault()
-        window.localStorage.removeItem('logged-in-user')
-        setUser(null)
-    }
-
-    const dispatch = useDispatch()
     useEffect(() => {
         dispatch(initializeBooks())
     }, [dispatch])
@@ -60,6 +54,12 @@ const App = () => {
     useEffect(() => {
         dispatch(initializeUsers())
     }, [dispatch])
+
+    const handleLogout = async (event) => {
+        event.preventDefault()
+        window.localStorage.removeItem('logged-in-user')
+        setUser(null)
+    }
 
     if (!user) {
         return (
