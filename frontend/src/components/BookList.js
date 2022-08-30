@@ -8,7 +8,9 @@ import {
     TableBody,
     Typography,
     Button,
+    TextField,
 } from '@mui/material'
+import { Box } from '@mui/system'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
 import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 
@@ -22,17 +24,36 @@ import { Link } from 'react-router-dom'
 
 const BookList = () => {
     const [showBookForm, setShowBookForm] = useState(false)
+    const [bookSearch, setBookSearch] = useState('')
 
     const books = useSelector((state) => state.books)
     const loggedUser = useSelector((state) => state.loggedUser)
 
     const dispatch = useDispatch()
 
+    const booksToShow =
+        bookSearch === ''
+            ? books
+            : books.filter((book) =>
+                  book.name.toLowerCase().includes(bookSearch.toLowerCase())
+              )
+
+    console.log(bookSearch)
+
     return (
         <div>
-            <Typography variant='h4' component='div' sx={{ mt: 3 }}>
-                Books List
-            </Typography>
+            <Box>
+                <Typography variant='h4' component='div' sx={{ mt: 3 }}>
+                    Books List
+                </Typography>
+                <TextField
+                    sx={{ mt: 1 }}
+                    size='small'
+                    placeholder='find a book'
+                    value={bookSearch}
+                    onChange={({ target }) => setBookSearch(target.value)}
+                />
+            </Box>
             <TableContainer component={Paper} variant='contained'>
                 <Table aria-label='books list'>
                     <TableHead>
@@ -50,7 +71,7 @@ const BookList = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {books.map((book) => (
+                        {booksToShow.map((book) => (
                             <TableRow key={book.id}>
                                 <TableCell component='th' scope='row'>
                                     <Link
