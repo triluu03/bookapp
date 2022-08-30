@@ -113,12 +113,18 @@ const App = () => {
                 </AppBar>
                 {notification ? (
                     notification.type === 'alert' ? (
-                        <Alert severity='error'>
+                        <Alert
+                            severity='error'
+                            style={{ position: 'sticky', top: 0 }}
+                        >
                             <AlertTitle>Error</AlertTitle>
                             {notification.message}
                         </Alert>
                     ) : (
-                        <Alert security='success'>
+                        <Alert
+                            security='success'
+                            style={{ position: 'sticky', top: 0 }}
+                        >
                             <AlertTitle>Success</AlertTitle>
                             {notification.message}
                         </Alert>

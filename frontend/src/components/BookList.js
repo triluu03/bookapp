@@ -120,6 +120,7 @@ const BookList = () => {
             <Button
                 onClick={() => setShowBookForm(!showBookForm)}
                 color={showBookForm ? 'error' : 'primary'}
+                variant='outlined'
             >
                 {showBookForm ? 'cancel' : 'suggest new book'}
             </Button>
