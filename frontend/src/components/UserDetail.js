@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { Box } from '@mui/system'
 import { Typography } from '@mui/material'
@@ -10,11 +10,18 @@ const UserDetail = ({ users }) => {
     return (
         <Box sx={{ mt: 2 }}>
             <Typography variant='h3'>{user.username}</Typography>
-            <Typography sx={{ mt: 1 }}>- Name: {user.name}</Typography>
+            <Typography variant='subtitle2'>{user.name}</Typography>
             <Typography sx={{ mt: 1 }}>
-                - Suggested books:{' '}
+                Suggested books:{' '}
                 {user.books.map((book) => (
-                    <li key={book.id}>{book.name}</li>
+                    <li key={book.id}>
+                        <Link
+                            to={`/books/${book.id}`}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            {book.name}
+                        </Link>
+                    </li>
                 ))}
             </Typography>
         </Box>
