@@ -59,3 +59,13 @@ export const dislikeBook = (bookObject) => {
         dispatch(modifyBook(newBook))
     }
 }
+
+export const commentBook = (bookObject, comment) => {
+    return async (dispatch) => {
+        const newBook = await bookService.modify(bookObject.id, {
+            ...bookObject,
+            comments: bookObject.comments.concat(comment),
+        })
+        dispatch(modifyBook(newBook))
+    }
+}

@@ -46,6 +46,7 @@ router.post('/', async (req, res) => {
         author: body.author,
         likes: 0,
         dislikes: 0,
+        comments: [],
         addedBy: user._id,
     })
 
@@ -66,6 +67,7 @@ router.put('/:id', async (req, res) => {
         author: body.author,
         likes: body.likes,
         dislikes: body.dislikes,
+        comments: body.comments,
         addedBy: body.addedBy.id,
     }
 

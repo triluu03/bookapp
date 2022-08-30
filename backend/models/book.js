@@ -21,6 +21,10 @@ const schema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    comments: {
+        type: Array,
+        required: true,
+    },
     addedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
