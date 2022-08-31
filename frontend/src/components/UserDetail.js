@@ -1,7 +1,13 @@
 import { Link, useParams } from 'react-router-dom'
 
 import { Box } from '@mui/system'
-import { Typography } from '@mui/material'
+import {
+    Typography,
+    List,
+    ListItem,
+    ListItemButton,
+    Divider,
+} from '@mui/material'
 
 const UserDetail = ({ users }) => {
     const id = useParams().id
@@ -12,17 +18,22 @@ const UserDetail = ({ users }) => {
             <Typography variant='h3'>{user.username}</Typography>
             <Typography variant='subtitle2'>{user.name}</Typography>
             <Typography sx={{ mt: 1 }}>
-                Suggested books:{' '}
-                {user.books.map((book) => (
-                    <li key={book.id}>
-                        <Link
-                            to={`/books/${book.id}`}
-                            style={{ textDecoration: 'none' }}
-                        >
-                            {book.name}
-                        </Link>
-                    </li>
-                ))}
+                <Typography variant='subtitle1'>Suggested books:</Typography>
+                <List>
+                    {user.books.map((book) => (
+                        <ListItem key={book.id}>
+                            <ListItemButton>
+                                <Link
+                                    to={`/books/${book.id}`}
+                                    style={{ textDecoration: 'none' }}
+                                >
+                                    "{book.name}" by {book.author}
+                                </Link>
+                            </ListItemButton>
+                            <Divider />
+                        </ListItem>
+                    ))}
+                </List>
             </Typography>
         </Box>
     )
