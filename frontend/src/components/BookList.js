@@ -16,11 +16,11 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { likeBook, dislikeBook } from '../reducers/bookReducer'
 
 import BookForm from './BookForm'
-import { Link, useNavigate } from 'react-router-dom'
 
 const BookList = () => {
     const [showBookForm, setShowBookForm] = useState(false)
@@ -131,7 +131,7 @@ export default BookList
 export const BookInHome = () => {
     const books = useSelector((state) => state.books)
     const loggedUser = useSelector((state) => state.loggedUser)
-    const booksToShow = books.slice(0, 5)
+    const booksToShow = books.slice(0, 6)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()

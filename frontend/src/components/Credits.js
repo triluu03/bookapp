@@ -1,6 +1,9 @@
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+
 const Credits = () => {
     return (
         <Box sx={{ mt: 3 }}>
@@ -10,24 +13,21 @@ const Credits = () => {
             <Box sx={{ mt: 1 }}>
                 <Typography variant='body1'>
                     This project is designed and coded all by{' '}
-                    <b>Luu, Duc Tri</b>. You can see the source code of this
-                    project below.
-                </Typography>
-            </Box>
-            <Box>
-                <Typography>
+                    <b>Luu, Duc Tri</b>. Here you can see the{' '}
                     <a href='https://github.com/triluu03/bookapp'>
-                        Source code
-                    </a>
+                        source code
+                    </a>{' '}
+                    of this project.
                 </Typography>
             </Box>
-            <Box sx={{ mt: 2 }}>
-                <Typography variant='h4'>Contact</Typography>
-            </Box>
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 2, textAlign: 'center' }}>
                 <Typography>
-                    <a href='https://www.linkedin.com/in/triluu03/'>LinkedIn</a>{' '}
-                    <a href='https://github.com/triluu03'>GitHub</a>
+                    <a href='https://www.linkedin.com/in/triluu03/'>
+                        <LinkedInIcon fontSize='large' color='primary' />
+                    </a>{' '}
+                    <a href='https://github.com/triluu03'>
+                        <GitHubIcon fontSize='large' color='primary' />
+                    </a>
                 </Typography>
             </Box>
         </Box>
