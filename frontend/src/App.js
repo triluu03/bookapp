@@ -72,74 +72,62 @@ const App = () => {
     }
 
     return (
-        <Container>
-            <BrowserRouter className='app'>
-                <AppBar position='static'>
-                    <Toolbar>
-                        <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
-                            <Button color='inherit' component={Link} to='/'>
-                                Home
-                            </Button>
+        <BrowserRouter className='app'>
+            <AppBar position='static'>
+                <Toolbar>
+                    <Box sx={{ textAlign: 'left', flexGrow: 1, ml: '7%' }}>
+                        <Button color='inherit' component={Link} to='/'>
+                            Home
+                        </Button>
+                        <Button color='inherit' component={Link} to='/books'>
+                            Books
+                        </Button>
+                        <Button color='inherit' component={Link} to='/credits'>
+                            Credits
+                        </Button>
+                    </Box>
+                    {user ? (
+                        <Box sx={{ mr: '5%' }}>
+                            <Typography variant='button'>
+                                {user.username} logged-in
+                            </Typography>
                             <Button
-                                color='inherit'
-                                component={Link}
-                                to='/books'
+                                color='primary'
+                                variant='contained'
+                                size='small'
+                                sx={{ ml: 1 }}
+                                onClick={handleLogout}
                             >
-                                Books
-                            </Button>
-                            <Button
-                                color='inherit'
-                                component={Link}
-                                to='/credits'
-                            >
-                                Credits
+                                Logout
                             </Button>
                         </Box>
-                        {user ? (
-                            <div>
-                                <Typography variant='button'>
-                                    {user.username} logged-in
-                                </Typography>
-                                <Button
-                                    color='primary'
-                                    variant='contained'
-                                    size='small'
-                                    sx={{ ml: 1 }}
-                                    onClick={handleLogout}
-                                >
-                                    Logout
-                                </Button>
-                            </div>
-                        ) : (
-                            <Button
-                                color='inherit'
-                                component={Link}
-                                to='/login'
-                            >
-                                Login
-                            </Button>
-                        )}
-                    </Toolbar>
-                </AppBar>
-                {notification ? (
-                    notification.type === 'alert' ? (
-                        <Alert
-                            severity='error'
-                            style={{ position: 'sticky', top: 0 }}
-                        >
-                            <AlertTitle>Error</AlertTitle>
-                            {notification.message}
-                        </Alert>
                     ) : (
-                        <Alert
-                            security='success'
-                            style={{ position: 'sticky', top: 0 }}
-                        >
-                            <AlertTitle>Success</AlertTitle>
-                            {notification.message}
-                        </Alert>
-                    )
-                ) : null}
+                        <Button color='inherit' component={Link} to='/login'>
+                            Login
+                        </Button>
+                    )}
+                </Toolbar>
+            </AppBar>
+            {notification ? (
+                notification.type === 'alert' ? (
+                    <Alert
+                        severity='error'
+                        style={{ position: 'sticky', top: 0 }}
+                    >
+                        <AlertTitle>Error</AlertTitle>
+                        {notification.message}
+                    </Alert>
+                ) : (
+                    <Alert
+                        security='success'
+                        style={{ position: 'sticky', top: 0 }}
+                    >
+                        <AlertTitle>Success</AlertTitle>
+                        {notification.message}
+                    </Alert>
+                )
+            ) : null}
+            <Container>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/books' element={<BookList />} />
@@ -157,8 +145,8 @@ const App = () => {
                         element={<BookDetails books={books} />}
                     />
                 </Routes>
-            </BrowserRouter>
-        </Container>
+            </Container>
+        </BrowserRouter>
     )
 }
 
