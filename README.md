@@ -1,14 +1,19 @@
 # Personal Project - BookApp
 ## What is this project?
-This is my first project I built using `React`, `Redux`, `Material UI`, `Express`, and `MongoDB`. 
+This is my first project I built with:
+- Frontend: `React`, `Redux`, `Material UI`
+- Backends: 
+  1. `NodeJS`, `Express`, `MongoDB`
+  2. `Django`, `PostgreSQL` **(still being built)**
 
 The app works as a platform for users to suggest books to each other and share their thoughts about specific recommended books in the app.  
 
 ## How to start the App: 
-### npm start
+### Frontend
 Start the front-end React App normally with the command: `npm start`. 
-### npm run dev
-Start the back-end in development mode by with the command: `npm run dev`. 
+### Backend
+- **Node/Express backend**: using the command `npm run dev`(in development mode)
+- **Django backend**: using the command `python manage.py runserver 3001`
 
 ## Here is a preview of the app!
 
