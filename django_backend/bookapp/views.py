@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 
 from django.views.decorators.csrf import csrf_exempt
 
-import json
+import json, jwt
 
 from .models import Book, User
 
@@ -27,8 +27,14 @@ def get_book_by_id(request, book_id):
 #------ Handle Requests for Users ------
 @csrf_exempt
 def handle_users(request):
+    # Handle GET requests
     if request.method == 'GET':
-        return JsonResponse(list(User.objects.all().values()), safe=False)
+        response = list(User.objects.all().values())
+        for user in response:
+            del user['password']
+        return JsonResponse(response, safe=False, status=200)
+    
+    # Handle POST requests
     elif request.method == 'POST':
         data = json.loads(request.body)
     
@@ -46,12 +52,25 @@ def handle_users(request):
         )
         try:
             new_user.save()
-            return HttpResponse('New user created!')
+            return HttpResponse('New user created!', status=201)
         except:
-            return HttpResponse('Something happened! Cannot create new user!')
+            return HttpResponse('Something happened! Cannot create new user!', status=400)
         
 
 
 #------ Handle Requests for Login ------
 def login(request):
-    return HttpResponse('This is for login!')
+    data = json.loads(request.body)
+    username = data['username']
+    password = data['password']
+    try:
+        user = User.objects.get(username=username, password=password)
+        payload = {
+            'id': user.id,
+            'username': user.username,
+            'password': user.password
+        }
+        token = jwt.encode(payload, 'secret', algorithm='HS256')
+        return JsonResponse({'token': token}, status=200)
+    except:
+        return HttpResponse('Invalid username or password!', status=400)
